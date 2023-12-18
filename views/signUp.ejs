@@ -1,0 +1,68 @@
+<%- include('layout') %>
+
+    <script>
+
+    </script>
+
+    <main>
+        <form action="/signup" method="post">
+            <p style="color: white;
+        background-color: black;
+        font-weight: bold;
+        font-size: 20px;
+        text-shadow: 0px -1px mediumpurple,
+            0px 3px mediumpurple;
+        position: fixed;
+        left: 560px;
+        top: 140px;">
+                Name</p><input type="text" name="name" required>
+            <p style="color: white;
+        background-color: black;
+        font-weight: bold;
+        font-size: 20px;
+        text-shadow: 0px -1px mediumpurple,
+            0px 3px mediumpurple;
+        position: fixed;
+        left: 560px;
+        top: 250px;">
+                Email-ID</p><input type="text" name="em" required>
+            <p style="color: white;
+            background-color: black;
+            font-weight: bold;
+            font-size: 20px;
+            text-shadow: 0px -1px mediumpurple,
+                0px 3px mediumpurple;
+            position: fixed;
+            left: 560px;
+            top: 360px;"> Password</p>
+            <p><input type="text" name="p" required></p>
+
+            <p style="color: white;
+        background-color: black;
+        font-weight: bold;
+        font-size: 20px;
+        text-shadow: 0px -1px mediumpurple,
+            0px 3px mediumpurple;
+        position: fixed;
+        left: 560px;
+        top: 470px;">
+                Confirm Password</p><input type="text" name="cp" required>
+
+            <% if (errorMessage) { %>
+                <p style="color: white;
+                background-color: black;
+                font-weight: bold;
+                font-size: 20px;
+                text-shadow: 0px -1px red,
+                    0px 3px red;
+                position: fixed;
+                left: 522px;
+                top: 670px;">
+                    <%= errorMessage %>
+                </p>
+                <% } %>
+
+
+                    <p><button type="submit" value="su" class="button">Sign Up</button></p>
+        </form>
+    </main>

@@ -1,0 +1,30 @@
+<%- include('layout') %>
+
+    <script>
+        function goToSignup() {
+            window.location.href = "http://127.0.0.1:3000/signup";
+        }
+
+        function goToLogin() {
+            window.location.href = "http://127.0.0.1:3000/login";
+        }
+
+    </script>
+
+
+    <p style="color: white;
+background-color: black;
+font-weight: bold;
+font-size: 35px;
+text-shadow: 0px -1px mediumpurple,
+    0px 4px mediumpurple;
+position: fixed;
+left: 650px;
+top: 300px;"> Get Started</p>
+
+    <form action="/" method="post">
+        <p><button type="button" onclick="goToSignup()" value="SignUp" name="signup" class="button">Sign Up</button></p>
+        <p><button type="button" onclick="goToLogin()" value="LogIn" name="login" class="button">Log In</button></p>
+
+
+    </form>

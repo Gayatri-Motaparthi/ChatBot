@@ -1,0 +1,42 @@
+<%- include('layout') %>
+    <style>
+        .button[value="li"] {
+            color: white;
+            background-color: mediumpurple;
+            height: 40px;
+            width: 100px;
+            border: 3px solid white;
+            border-radius: 120px;
+            position: fixed;
+            left: 668px;
+            top: 500px;
+        }
+    </style>
+
+
+    <main>
+        <form action="/login" method="post">
+            <p style="color: white;
+        background-color: black;
+        font-weight: bold;
+        font-size: 20px;
+        text-shadow: 0px -1px mediumpurple,
+            0px 3px mediumpurple;
+        position: fixed;
+        left: 560px;
+        top: 250px;">
+                Email-ID</p><input type="text" name="em" required>
+            <p style="color: white;
+            background-color: black;
+            font-weight: bold;
+            font-size: 20px;
+            text-shadow: 0px -1px mediumpurple,
+                0px 3px mediumpurple;
+            position: fixed;
+            left: 560px;
+            top: 360px;"> Password</p>
+            <p><input type="text" name="p" required></p>
+
+            <p><button type="submit" value="li" class="button">Log In</button></p>
+        </form>
+    </main>

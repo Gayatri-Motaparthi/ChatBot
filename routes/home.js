@@ -40,6 +40,15 @@ router.get("/homepage/:name?", function (req, res) {
     res.render('homepage', { userName: name, content: "" });
 });
 
+router.post("/homepage", function (req, res) {
+
+
+
+    res.redirect("/homepage");
+
+});
+
+
 // router.post("/signup", function (req, res) {
 //     res.redirect("/homepage");
 
@@ -53,10 +62,5 @@ router.get("/homepage/:name?", function (req, res) {
 
 // });
 
-// router.post("/homepage", function (req, res) {
-
-//     res.redirect("/homepage");
-
-// });
 
 module.exports = router;

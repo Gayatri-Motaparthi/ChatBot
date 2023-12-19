@@ -1,23 +1,11 @@
 <%- include('layout') %>
-    <style>
-        .button[value="li"] {
-            color: white;
-            background-color: mediumpurple;
-            height: 40px;
-            width: 100px;
-            border: 3px solid white;
-            border-radius: 120px;
-            position: fixed;
-            left: 668px;
-            top: 500px;
-        }
-    </style>
 
 
     <main>
         <form action="/login" method="post">
-            <p style="color: white;
-        background-color: black;
+            <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
+                
+                background-color: <%=theme==='Light' ? 'white': 'black' %>;
         font-weight: bold;
         font-size: 20px;
         text-shadow: 0px -1px mediumpurple,
@@ -26,8 +14,9 @@
         left: 560px;
         top: 250px;">
                 Email-ID</p><input type="text" name="em" required>
-            <p style="color: white;
-            background-color: black;
+            <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
+               
+                background-color: <%=theme==='Light' ? 'white': 'black' %>;
             font-weight: bold;
             font-size: 20px;
             text-shadow: 0px -1px mediumpurple,
@@ -38,8 +27,9 @@
             <p><input type="text" name="p" required></p>
 
             <% if (errorMessage) { %>
-                <p style="color: white;
-                background-color: black;
+                <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
+             
+                    background-color: <%=theme==='Light' ? 'white': 'black' %>;
                 font-weight: bold;
                 font-size: 20px;
                 text-shadow: 0px -1px red,
@@ -92,11 +82,13 @@
                         }
                     }
                     if (correctPassword) {
-                        window.location.href = "/homepage" + encodeURIComponent(userName);
+                        window.location.href = "/homepage/" + encodeURIComponent(userName);
+                        return;
                     }
                     else {
                         var error = "Incorrect Password. Try Again"
                         window.location.href = "/login/" + encodeURIComponent(error);
+
                     }
                     return;
 

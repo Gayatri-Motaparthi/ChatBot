@@ -16,8 +16,8 @@
 </head>
 <style>
     body {
-        color: white;
-        background-color: black;
+        color: <%=theme==='Light' ? 'black': 'white' %>;
+        background-color: <%=theme==='Light' ? 'white': 'black' %>;
         padding-top: 100px;
         padding-bottom: 100px;
         padding-left: 330px;
@@ -27,8 +27,7 @@
     }
 
     header {
-        color: white;
-        background-color: black;
+        color: <%=theme==='Light' ? 'black': 'white' %>;
         font-weight: bold;
         font-size: 35px;
         text-shadow: 0px -1px mediumpurple,
@@ -42,13 +41,14 @@
 
     input[name="in"],
     textarea {
-        color: white;
+        color: <%=theme==='Light' ? 'black': 'white' %>;
         font-size: 20px;
-        background-color: black;
+        background-color: <%=theme==='Light' ? 'white': 'black' %>;
         box-shadow: 4px 6px mediumpurple;
         height: 50px;
         width: 330px;
-        border: 4px solid white;
+        border: 4px solid <%=theme==='Light' ? 'black': 'white' %>;
+
         border-radius: 120px;
 
 
@@ -63,13 +63,14 @@
 
     input[name="q"],
     textarea {
-        color: white;
+        color: <%=theme==='Light' ? 'black': 'white' %>;
         font-size: 20px;
-        background-color: black;
+        background-color: <%=theme==='Light' ? 'white': 'black' %>;
         box-shadow: 4px 6px mediumpurple;
         height: 50px;
         width: 330px;
-        border: 4px solid white;
+        border: 4px solid <%=theme==='Light' ? 'black': 'white' %>;
+
         border-radius: 120px;
 
 
@@ -84,13 +85,14 @@
 
     input[name="name"],
     textarea {
-        color: white;
+        color: <%=theme==='Light' ? 'black': 'white' %>;
         font-size: 20px;
-        background-color: black;
+        background-color: <%=theme==='Light' ? 'white': 'black' %>;
         box-shadow: 4px 6px mediumpurple;
         height: 50px;
         width: 330px;
-        border: 4px solid white;
+        border: 4px solid <%=theme==='Light' ? 'black': 'white' %>;
+
         border-radius: 120px;
 
 
@@ -105,13 +107,13 @@
 
     input[name="em"],
     textarea {
-        color: white;
+        color: <%=theme==='Light' ? 'black': 'white' %>;
         font-size: 20px;
-        background-color: black;
+        background-color: <%=theme==='Light' ? 'white': 'black' %>;
         box-shadow: 4px 6px mediumpurple;
         height: 50px;
         width: 330px;
-        border: 4px solid white;
+        border: 4px solid <%=theme==='Light' ? 'black': 'white' %>;
         border-radius: 120px;
 
 
@@ -126,13 +128,13 @@
 
     input[name="p"],
     textarea {
-        color: white;
+        color: <%=theme==='Light' ? 'black': 'white' %>;
         font-size: 20px;
-        background-color: black;
+        background-color: <%=theme==='Light' ? 'white': 'black' %>;
         box-shadow: 4px 6px mediumpurple;
         height: 50px;
         width: 330px;
-        border: 4px solid white;
+        border: 4px solid <%=theme==='Light' ? 'black': 'white' %>;
         border-radius: 120px;
 
 
@@ -147,16 +149,14 @@
 
     input[name="cp"],
     textarea {
-        color: white;
+        color: <%=theme==='Light' ? 'black': 'white' %>;
         font-size: 20px;
-        background-color: black;
+        background-color: <%=theme==='Light' ? 'white': 'black' %>;
         box-shadow: 4px 6px mediumpurple;
         height: 50px;
         width: 330px;
-        border: 4px solid white;
+        border: 4px solid <%=theme==='Light' ? 'black': 'white' %>;
         border-radius: 120px;
-
-
         padding-left: 18px;
         padding-right: 18px;
 
@@ -168,11 +168,12 @@
 
 
     .button[value="SignUp"] {
-        color: white;
+        color: <%=theme==='Light' ? 'black': 'white' %>;
+
         background-color: mediumpurple;
         height: 45px;
         width: 200px;
-        border: 4px solid white;
+        border: 4px solid <%=theme==='Light' ? 'black': 'white' %>;
         border-radius: 120px;
         position: fixed;
         left: 538px;
@@ -180,8 +181,34 @@
     }
 
     .button[value="LogIn"] {
-        color: white;
+        color: <%=theme==='Light' ? 'black': 'white' %>;
         background-color: mediumpurple;
+        height: 45px;
+        width: 200px;
+        border: 4px solid <%=theme==='Light' ? 'black': 'white' %>;
+        ;
+        border-radius: 120px;
+        position: fixed;
+        left: 750px;
+        top: 400px;
+    }
+
+    .button[value="Light"] {
+        color: black;
+        background-color: white;
+        height: 45px;
+        width: 200px;
+        border: 4px solid white;
+        border-radius: 120px;
+        position: fixed;
+        left: 538px;
+        top: 400px;
+        box-shadow: 4px 6px mediumpurple;
+    }
+
+    .button[value="Dark"] {
+        color: white;
+        background-color: black;
         height: 45px;
         width: 200px;
         border: 4px solid white;
@@ -189,6 +216,7 @@
         position: fixed;
         left: 750px;
         top: 400px;
+        box-shadow: 4px 6px mediumpurple;
     }
 
 
@@ -197,19 +225,23 @@
         background-color: mediumpurple;
         height: 40px;
         width: 100px;
-        border: 3px solid white;
+        border: 3px solid <%=theme==='Light' ? 'black': 'white' %>;
+
         border-radius: 120px;
         position: fixed;
         left: 668px;
-        top: 400px;
+        top: 500px;
     }
 
     .button[value="su"] {
-        color: white;
+        color: <%=theme==='Light' ? 'black': 'white' %>;
+
         background-color: mediumpurple;
         height: 40px;
         width: 100px;
-        border: 3px solid white;
+        border: 3px solid <%=theme==='Light' ? 'black': 'white' %>;
+
+
         border-radius: 120px;
         position: fixed;
         left: 668px;
@@ -217,26 +249,29 @@
     }
 
     .button[value="back"] {
-        color: white;
+        color: <%=theme==='Light' ? 'black': 'white' %>;
+
         background-color: mediumpurple;
         height: 40px;
         width: 100px;
-        border: 4px solid white;
+        border: 4px solid <%=theme==='Light' ? 'black': 'white' %>;
+
         border-radius: 120px;
         position: fixed;
         left: 669px;
         top: 690px;
     }
 
-    input[type="text"],
+    input[name="inputbar"],
     textarea {
-        color: white;
+        color: <%=theme==='Light' ? 'black': 'white' %>;
         font-size: 20px;
-        background-color: black;
+        background-color: <%=theme==='Light' ? 'white': 'black' %>;
         box-shadow: 4px 6px mediumpurple;
         height: 50px;
         width: 52%;
-        border: 4px solid white;
+        border: 4px solid <%=theme==='Light' ? 'black': 'white' %>;
+
         border-radius: 120px;
         position: fixed;
         left: 350px;
@@ -248,11 +283,12 @@
     }
 
     .button[value="enter"] {
-        color: white;
+        color: <%=theme==='Light' ? 'black': 'white' %>;
+
         background-color: mediumpurple;
         height: 30px;
         width: 55px;
-        border: 3px solid white;
+        border: 3px solid <%=theme==='Light' ? 'black': 'white' %>;
         border-radius: 120px;
         position: fixed;
         left: 1071px;

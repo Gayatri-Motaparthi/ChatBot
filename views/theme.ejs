@@ -1,13 +1,7 @@
-<%- include('layout') %>
+<%- include('layout', { theme }) %>
 
     <script>
-        function goToPreLoginLight() {
 
-        }
-
-        function goToPreLoginDark() {
-            window.location.href = "/preLogin";
-        }
 
         console.log(localStorage.getItem("users"))
 
@@ -15,20 +9,19 @@
     </script>
 
 
-    <p style="color: white;
-background-color: black;
-font-weight: bold;
+    <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
 font-size: 35px;
+font-weight: bold;
 text-shadow: 0px -1px mediumpurple,
     0px 4px mediumpurple;
 position: fixed;
-left: 650px;
+left: 630px;
 top: 300px;">Select Theme</p>
 
     <form action="/" method="post">
-        <p><button type="button" onclick="goToLoginLight()" value="SignUp" name="light" class="button">Light</button>
+        <p><button type="submit" value="Light" name="theme" class="button">Light</button>
         </p>
-        <p><button type="button" onclick="goToLoginDark()" value="LogIn" name="dark" class="button">Dark</button></p>
+        <p><button type="submit" value="Dark" name="theme" class="button">Dark</button></p>
 
 
     </form>

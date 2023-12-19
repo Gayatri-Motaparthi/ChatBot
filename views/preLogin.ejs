@@ -1,4 +1,4 @@
-<%- include('layout') %>
+<%- include('layout',{ theme }) %>
 
     <script>
         function goToSignup() {
@@ -6,7 +6,7 @@
         }
 
         function goToLogin() {
-            window.location.href = "http://127.0.0.1:3000/login";
+            window.location.href = "/login";
         }
 
         console.log(localStorage.getItem("users"))
@@ -15,8 +15,8 @@
     </script>
 
 
-    <p style="color: white;
-background-color: black;
+    <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
+        background-color: <%=theme==='Light' ? 'white': 'black' %>;
 font-weight: bold;
 font-size: 35px;
 text-shadow: 0px -1px mediumpurple,

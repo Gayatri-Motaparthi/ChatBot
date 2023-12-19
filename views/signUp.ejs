@@ -1,11 +1,11 @@
-<%- include('layout') %>
+<%- include('layout', {theme}) %>
 
 
 
     <main>
         <form name="signUp" action="/signup" method="post">
-            <p style="color: white;
-        background-color: black;
+            <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
+                background-color: <%=theme==='Light' ? 'white': 'black' %>;
         font-weight: bold;
         font-size: 20px;
         text-shadow: 0px -1px mediumpurple,
@@ -14,8 +14,8 @@
         left: 560px;
         top: 140px;">
                 Name</p><input type="text" name="name" required>
-            <p style="color: white;
-        background-color: black;
+            <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
+                background-color: <%=theme==='Light' ? 'white': 'black' %>;
         font-weight: bold;
         font-size: 20px;
         text-shadow: 0px -1px mediumpurple,
@@ -24,8 +24,8 @@
         left: 560px;
         top: 250px;">
                 Email-ID</p><input type="text" name="em" required>
-            <p style="color: white;
-            background-color: black;
+            <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
+                background-color: <%=theme==='Light' ? 'white': 'black' %>;
             font-weight: bold;
             font-size: 20px;
             text-shadow: 0px -1px mediumpurple,
@@ -35,8 +35,8 @@
             top: 360px;"> Password</p>
             <p><input type="text" name="p" required></p>
 
-            <p style="color: white;
-        background-color: black;
+            <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
+                background-color: <%=theme==='Light' ? 'white': 'black' %>;
         font-weight: bold;
         font-size: 20px;
         text-shadow: 0px -1px mediumpurple,
@@ -47,8 +47,8 @@
                 Confirm Password</p><input type="text" name="cp" required>
 
             <% if (errorMessage) { %>
-                <p style="color: white;
-                background-color: black;
+                <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
+                    background-color: <%=theme==='Light' ? 'white': 'black' %>;
                 font-weight: bold;
                 font-size: 20px;
                 text-shadow: 0px -1px red,

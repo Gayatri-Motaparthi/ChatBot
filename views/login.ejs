@@ -37,6 +37,80 @@
             top: 360px;"> Password</p>
             <p><input type="text" name="p" required></p>
 
-            <p><button type="submit" value="li" class="button">Log In</button></p>
+            <% if (errorMessage) { %>
+                <p style="color: white;
+                background-color: black;
+                font-weight: bold;
+                font-size: 20px;
+                text-shadow: 0px -1px red,
+                    0px 3px red;
+                position: fixed;
+                left: 550px;
+                top: 770px;">
+                    <%= errorMessage %>
+                </p>
+                <% } %>
+
+                    <p><button onclick="checkIfUserExists()" id="logInButton" type="button" value="li"
+                            class="button">Log In</button></p>
+
+                    <p><button onclick=" goBack()" type="button" value="back" class="button">Back</button>
+                    </p>
         </form>
     </main>
+
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function () {
+            var signUpButton = document.getElementById('logInButton');
+            signUpButton.addEventListener('click', checkIfUserExists);
+
+            function checkIfUserExists() {
+                var userName;
+                var email = document.getElementsByName("em")[0].value;
+                var password = document.getElementsByName("p")[0].value;
+
+
+                var allUserDetails = JSON.parse(localStorage.getItem("users"));
+
+                var userExists = false;
+
+                for (var i = 0; i < allUserDetails.length; i++) {
+                    if (email === allUserDetails[i].email) {
+                        userName = allUserDetails[i].name;
+                        userExists = true;
+                        break;
+                    }
+                }
+
+                if (userExists) {
+                    var correctPassword = false;
+
+                    for (var i = 0; i < allUserDetails.length; i++) {
+                        if (password === allUserDetails[i].password) {
+                            correctPassword = true;
+                            break;
+                        }
+                    }
+                    if (correctPassword) {
+                        window.location.href = "/homepage" + encodeURIComponent(userName);
+                    }
+                    else {
+                        var error = "Incorrect Password. Try Again"
+                        window.location.href = "/login/" + encodeURIComponent(error);
+                    }
+                    return;
+
+
+                }
+                else {
+                    var error = "Account does not exist! Please Sign Up";
+                    window.location.href = "/login/" + encodeURIComponent(error);
+                    return;
+                }
+            }
+        });
+
+        function goBack() {
+            window.location.href = "/";
+        }
+    </script>

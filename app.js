@@ -1,7 +1,8 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-app.use(express.static("public"));
+app.use(express.static("public", { "Content-Type": "application/javascript" }));
+app.use(express.static(path.join(__dirname, 'routes')));
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());

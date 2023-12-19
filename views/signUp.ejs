@@ -1,11 +1,9 @@
 <%- include('layout') %>
 
-    <script>
 
-    </script>
 
     <main>
-        <form action="/signup" method="post">
+        <form name="signUp" action="/signup" method="post">
             <p style="color: white;
         background-color: black;
         font-weight: bold;
@@ -56,13 +54,79 @@
                 text-shadow: 0px -1px red,
                     0px 3px red;
                 position: fixed;
-                left: 522px;
-                top: 670px;">
+                left: 533px;
+                top: 770px;">
                     <%= errorMessage %>
                 </p>
                 <% } %>
 
 
-                    <p><button type="submit" value="su" class="button">Sign Up</button></p>
+                    <p><button onclick="checkIfUserExists()" id="signUpButton" type="button" value="su"
+                            class="button">Sign
+                            Up</button></p>
+
+                    <p><button onclick=" goBack()" type="button" value="back" class="button">Back</button>
+                    </p>
+
+
+
+
         </form>
+
     </main>
+
+
+    <script defer>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var signUpButton = document.getElementById('signUpButton');
+            signUpButton.addEventListener('click', checkIfUserExists);
+
+            function checkIfUserExists() {
+
+                var name = document.getElementsByName("name")[0].value;
+                var email = document.getElementsByName("em")[0].value;
+                var password = document.getElementsByName("p")[0].value;
+                var confirmPassword = document.getElementsByName("cp")[0].value;
+
+                var allUserDetails = JSON.parse(localStorage.getItem("users"));
+
+                for (var i = 0; i < allUserDetails.length; i++) {
+                    if (email === allUserDetails[i].email) {
+                        const errorMessage = "Account already exists. Try Logging In";
+
+                        window.location.href = "/signup/" + encodeURIComponent(errorMessage);
+
+                        return;
+                    }
+                }
+                if (!email.includes("@") || !email.includes(".")) {
+                    const error = "Invalid Email ID!";
+                    window.location.href = "/signup/" + encodeURIComponent(error);
+                    return;
+
+                }
+
+                if (password != confirmPassword) {
+                    const error = "Passwords do not match. Please try again.";
+                    window.location.href = "/signup/" + encodeURIComponent(error);
+
+                }
+                else {
+
+                    userDetails = { "name": name, "email": email, "password": confirmPassword }
+                    allUserDetails.push(userDetails);
+                    localStorage.setItem("users", JSON.stringify(allUserDetails));
+                    window.location.href = "/homepage" + encodeURIComponent(name);
+                }
+
+
+            }
+        });
+
+        function goBack() {
+            window.location.href = "/";
+        }
+
+
+    </script>

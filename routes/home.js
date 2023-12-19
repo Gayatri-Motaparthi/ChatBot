@@ -3,8 +3,8 @@ const router = express.Router();
 
 const path = require("path");
 
-const Hashing = require("./hashing"); t
-const hash = new Hashing();
+// const Hashing = require("./hashing");
+// const hash = new Hashing();
 
 
 
@@ -19,78 +19,44 @@ router.get("/", function (req, res) {
     }
 });
 
-router.get("/signup", function (req, res) {
-    res.render("signUp", { errorMessage: "" });
+router.get("/signup/:error?", function (req, res) {
+    const error = req.params.error || "";
+    res.render("signUp", { errorMessage: error });
+
 
 });
 
 
-router.get("/login", function (req, res) {
-    res.render("login");
+router.get("/login/:error?", function (req, res) {
+    const error = req.params.error || "";
+    res.render("login", { errorMessage: error });
 
 });
 
-router.get("/homepage", function (req, res) {
+router.get("/homepage/:name?", function (req, res) {
+    const name = req.params.name || "";
     console.log("in the homepage request");
 
-    res.render('homepage');
+    res.render('homepage', { userName: name, content: "" });
 });
 
-router.post("/signup", function (req, res) {
+// router.post("/signup", function (req, res) {
+//     res.redirect("/homepage");
+
+// });
+
+// router.post("/login", function (req, res) {
 
 
 
-    var name = req.body.name;
-    var email = req.body.em;
-    var allUserDetails = localStorage.getItem("users");
-    for (item in allUserDetails) {
-        if (email == item[i].get("email")) {
-            const error = "Account already exists. Try Logging In";
-            res.render("signup", { errorMessage: error }, iflogin = true)
-            break;
-        }
+//     res.redirect("/homepage");
 
-    }
+// });
 
-    var password = hash.passwordHashing(req.body.p);
-    var confirmPassword = hash.passwordHashing(req.body.cp);
+// router.post("/homepage", function (req, res) {
 
-    if (password != confirmPassword) {
-        const error = "Passwords do not match. Please try again.";
-        res.render("signup", { errorMessage: error })
-    }
+//     res.redirect("/homepage");
 
-    const userDetails = { "name": name, "email": email, "password": password }
-
-
-
-
-
-    // // console.log(name);
-    // res.cookie('myCookie', email, { maxAge: 10, httpOnly: true });
-
-
-    res.redirect("/homepage");
-
-});
-
-router.post("/login", function (req, res) {
-
-    var email = req.body.em;
-    var password = hash.passwordHashing(req.body.p);
-
-    console.log(password);
-    res.cookie('myCookie', email, { maxAge: 300000, httpOnly: true });
-
-
-    res.redirect("/homepage");
-
-});
-
-router.post("/homepage", function (req, res) {
-
-    res.redirect("/homepage");
-
-});
+// });
 
 module.exports = router;

@@ -1,16 +1,16 @@
 
-class Hashing {
 
-    passwordHashing(password) {
-        const sha256 = require('sha256');
-        // const { createHash } = require('crypto');
 
-        return sha256(password);
-        // return createHash('sha256').update(password).digest('hex');
-    }
-}
+function passwordHashing(password) {
+    const sha256 = require('sha256');
+    // const { createHash } = require('crypto');
 
-module.exports = Hashing;
+    return sha256(password);
+    // return createHash('sha256').update(password).digest('hex');
+};
+
+
+module.exports = { passwordHashing };
 
 // /*
 // // password hashing

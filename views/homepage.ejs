@@ -6,59 +6,53 @@
 
     <body>
         <main>
-            <% if (content=="" ) { %>
-                <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
-             
-                background-color: <%=theme==='Light' ? 'white': 'black' %>;
-            font-weight: bold;
-            font-size: 50px;
-            text-shadow: 0px -1px mediumpurple,
-                0px 3px mediumpurple;
-            position: fixed;
-            left: 593px;
-            top: 350px;">
-                    Welcome, <%= userName %>!
-                </p>
-                <% } else { %>
-                    <p style="
-                    color:mediumpurple;
-                    background-color: <%=theme==='Light' ? 'white' : 'black' %>;
+
+
+
+            <!-- Loop through questions and answers -->
+            <% for (var i=0; i < questions.length; i++) { %>
+                <p style="color:mediumpurple;
+                    background-color: <%= theme === 'Light' ? 'white' : 'black' %>;
                     font-weight: bold;
                     font-size: 30px;
-                    text-shadow: 0px 0px <%=theme==='Light' ? 'black': 'white' %>,
-                        0px 2.5px <%=theme==='Light' ? 'black': 'white' %>">Question:</p>
-                    <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
-                        background-color: <%=theme==='Light' ? 'white': 'black' %>;
+                    text-shadow: 0px 0px <%= theme === 'Light' ? 'black' : 'white' %>,
+                        0px 2.5px <%= theme === 'Light' ? 'black' : 'white' %>">Question:</p>
+                <p style="color: <%= theme === 'Light' ? 'black' : 'white' %>;
+                    background-color: <%= theme === 'Light' ? 'white' : 'black' %>;
                     font-weight: bold;
                     font-size: 20px;
                     text-shadow: 0px -1px mediumpurple,
                         0px 3px mediumpurple;">
-                        <%= question %>
-                    </p>
-                    <p style="color:mediumpurple; 
-                    background-color: <%=theme==='Light' ? 'white' : 'black' %>;
+                    <%= questions[i] %>
+                </p>
+                <p style="color:mediumpurple;
+                    background-color: <%= theme === 'Light' ? 'white' : 'black' %>;
                     font-weight: bold;
                     font-size: 30px;
-                    text-shadow: 0px 0px <%=theme==='Light' ? 'black': 'white' %>,
-                        0px 2.5px <%=theme==='Light' ? 'black': 'white' %>">Answer:</p>
-                    <p style=" color: <%=theme==='Light' ? 'black' : 'white' %>;
-                        background-color: <%=theme==='Light' ? 'white' : 'black' %>;
-                            font-weight: bold;
-                            font-size: 20px;
-                            text-shadow: 0px -1px mediumpurple,
-                            0px 3px mediumpurple;">
-                        <%= content %>
-                    </p>
-                    <% } %>
+                    text-shadow: 0px 0px <%= theme === 'Light' ? 'black' : 'white' %>,
+                        0px 2.5px <%= theme === 'Light' ? 'black' : 'white' %>">Answer:</p>
+                <p style="color: <%= theme === 'Light' ? 'black' : 'white' %>;
+                    background-color: <%= theme === 'Light' ? 'white' : 'black' %>;
+                    font-weight: bold;
+                    font-size: 20px;
+                    text-shadow: 0px -1px mediumpurple,
+                        0px 3px mediumpurple;">
+                    <%= answers[i] %>
+                </p>
+                <br>
+                <br>
+                <% } %>
 
 
-                        <form action="/homepage" , method="post">
-                            <p><input type="text" placeholder="Message ChatGPT..." name="inputbar" required><button
-                                    type="submit" value="enter" class="button">Enter</p>
 
-                            <p><button onclick="logOut()" type="button" value="logout" class="button">Log Out</p>
+                    <form action="/homepage" , method="post">
+                        <p><input type="text" placeholder="Message ChatGPT..." name="inputbar" required><button
+                                type="submit" value="enter" class="button">Enter</p>
 
-                        </form>
+                        <p><button onclick="logOut()" type="button" value="logout" class="button">Log Out
+                        </p>
+
+                    </form>
 
 
 

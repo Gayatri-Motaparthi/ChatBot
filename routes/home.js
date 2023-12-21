@@ -3,13 +3,14 @@ const router = express.Router();
 
 const path = require("path");
 
-// const Hashing = require("./hashing");
-// const hash = new Hashing();
-
 var theme;
 
 const { getChatResponse } = require("./axios");
 const { question } = require("readline-sync");
+
+var questions = [];
+var answers = [];
+
 
 
 
@@ -46,20 +47,24 @@ router.get("/login/:error?", function (req, res) {
 
 });
 
-router.get("/homepage/:name?", function (req, res) {
+router.get("/homepage/", function (req, res) {
     const name = req.params.name || "";
     console.log("in the homepage request");
 
-    res.render('homepage', { theme, userName: name, content: "" });
+    res.render('homepage', { theme, questions, answers });
 });
+
 
 router.post("/homepage", async function (req, res) {
     var question = req.body.inputbar;
+    questions.push(question);
 
     try {
         var response = await getChatResponse(question);
         var content = response.data
-        res.render("homepage", { theme, question, content });
+        answers.push(content);
+
+        res.render("homepage", { theme, questions, answers });
     } catch (error) {
         console.error(error);
     }

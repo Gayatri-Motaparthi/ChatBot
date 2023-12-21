@@ -50,12 +50,12 @@
                 <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
                     background-color: <%=theme==='Light' ? 'white': 'black' %>;
                 font-weight: bold;
-                font-size: 20px;
-                text-shadow: 0px -1px red,
-                    0px 3px red;
-                position: fixed;
-                left: 533px;
-                top: 770px;">
+                font-size: 30px;
+                text-shadow: 0px 0px red,
+                    0px 2px red;
+                text-align: center;
+                position: relative;
+                top: 670px;">
                     <%= errorMessage %>
                 </p>
                 <% } %>
@@ -117,7 +117,7 @@
                     userDetails = { "name": name, "email": email, "password": confirmPassword }
                     allUserDetails.push(userDetails);
                     localStorage.setItem("users", JSON.stringify(allUserDetails));
-                    window.location.href = "/homepage" + encodeURIComponent(name);
+                    window.location.href = "/homepage";
                 }
 
 
@@ -125,7 +125,7 @@
         });
 
         function goBack() {
-            window.location.href = "/";
+            window.location.href = "/preLogin";
         }
 
 

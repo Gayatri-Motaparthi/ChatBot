@@ -34,15 +34,15 @@
                 font-size: 20px;
                 text-shadow: 0px -1px red,
                     0px 3px red;
-                position: fixed;
-                left: 550px;
-                top: 770px;">
+                text-align: center;
+                position: relative;
+                top: 670px;">
                     <%= errorMessage %>
                 </p>
                 <% } %>
 
-                    <p><button onclick="checkIfUserExists()" id="logInButton" type="button" value="li"
-                            class="button">Log In</button></p>
+                    <p><button onclick=" checkIfUserExists()" id="logInButton" type="button" value="li" class="button">
+                            Log In</button></p>
 
                     <p><button onclick=" goBack()" type="button" value="back" class="button">Back</button>
                     </p>
@@ -82,7 +82,7 @@
                         }
                     }
                     if (correctPassword) {
-                        window.location.href = "/homepage/" + encodeURIComponent(userName);
+                        window.location.href = "/homepage";
                         return;
                     }
                     else {
@@ -103,6 +103,6 @@
         });
 
         function goBack() {
-            window.location.href = "/";
+            window.location.href = "/preLogin";
         }
     </script>

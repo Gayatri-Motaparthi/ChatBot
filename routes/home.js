@@ -8,9 +8,15 @@ const path = require("path");
 
 var theme;
 
+const { getChatResponse } = require("./axios");
+const { question } = require("readline-sync");
+
+
+
 
 
 router.get("/", function (req, res) {
+
     res.render("theme", { theme });
 
 });
@@ -47,12 +53,21 @@ router.get("/homepage/:name?", function (req, res) {
     res.render('homepage', { theme, userName: name, content: "" });
 });
 
-router.post("/homepage", function (req, res) {
+router.post("/homepage", async function (req, res) {
+    var question = req.body.inputbar;
+
+    try {
+        var response = await getChatResponse(question);
+        var content = response.data
+        res.render("homepage", { theme, question, content });
+    } catch (error) {
+        console.error(error);
+    }
+});
 
 
-
-    res.redirect("/homepage");
-
+router.get("/logout", function (req, res) {
+    res.redirect("/")
 });
 
 
@@ -68,6 +83,10 @@ router.post("/homepage", function (req, res) {
 //     res.redirect("/homepage");
 
 // });
+// router.post("/tryPostman", function (req, res) {
+//     console.log(req.body)
+//     res.json({})
+//     // });
 
 
 module.exports = router;

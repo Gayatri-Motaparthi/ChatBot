@@ -284,7 +284,7 @@
 
     .button[value="enter"] {
         color: <%=theme==='Light' ? 'black': 'white' %>;
-
+        font-size: 15px;
         background-color: mediumpurple;
         height: 30px;
         width: 55px;
@@ -293,6 +293,20 @@
         position: fixed;
         left: 1071px;
         top: 790px;
+    }
+
+    .button[value="logout"] {
+        color: <%=theme==='Light' ? 'black': 'white' %>;
+        font-size: 16px;
+        background-color: mediumpurple;
+        height: 40px;
+        width: 80px;
+        border: 3px solid <%=theme==='Light' ? 'black': 'white' %>;
+        border-radius: 120px;
+        position: fixed;
+        right: 20px;
+        top: 35px;
+        padding-top: 5px;
     }
 </style>
 
@@ -325,6 +339,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script src="axios.js"></script>
 </body>
 
 </html>

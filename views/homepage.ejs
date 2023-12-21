@@ -4,10 +4,10 @@
 
     </style>
 
-
-    <main>
-        <% if (content=="" ) { %>
-            <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
+    <body>
+        <main>
+            <% if (content=="" ) { %>
+                <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
              
                 background-color: <%=theme==='Light' ? 'white': 'black' %>;
             font-weight: bold;
@@ -17,23 +17,57 @@
             position: fixed;
             left: 593px;
             top: 350px;">
-                Welcome, <%= userName %>!
-            </p>
-            <% } else { %>
-                <%= content %>
+                    Welcome, <%= userName %>!
+                </p>
+                <% } else { %>
+                    <p style="
+                    color:mediumpurple;
+                    background-color: <%=theme==='Light' ? 'white' : 'black' %>;
+                    font-weight: bold;
+                    font-size: 30px;
+                    text-shadow: 0px 0px <%=theme==='Light' ? 'black': 'white' %>,
+                        0px 2.5px <%=theme==='Light' ? 'black': 'white' %>">Question:</p>
+                    <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
+                        background-color: <%=theme==='Light' ? 'white': 'black' %>;
+                    font-weight: bold;
+                    font-size: 20px;
+                    text-shadow: 0px -1px mediumpurple,
+                        0px 3px mediumpurple;">
+                        <%= question %>
+                    </p>
+                    <p style="color:mediumpurple; 
+                    background-color: <%=theme==='Light' ? 'white' : 'black' %>;
+                    font-weight: bold;
+                    font-size: 30px;
+                    text-shadow: 0px 0px <%=theme==='Light' ? 'black': 'white' %>,
+                        0px 2.5px <%=theme==='Light' ? 'black': 'white' %>">Answer:</p>
+                    <p style=" color: <%=theme==='Light' ? 'black' : 'white' %>;
+                        background-color: <%=theme==='Light' ? 'white' : 'black' %>;
+                            font-weight: bold;
+                            font-size: 20px;
+                            text-shadow: 0px -1px mediumpurple,
+                            0px 3px mediumpurple;">
+                        <%= content %>
+                    </p>
                     <% } %>
 
 
-                        <form>
+                        <form action="/homepage" , method="post">
                             <p><input type="text" placeholder="Message ChatGPT..." name="inputbar" required><button
                                     type="submit" value="enter" class="button">Enter</p>
+
+                            <p><button onclick="logOut()" type="button" value="logout" class="button">Log Out</p>
+
                         </form>
 
 
 
-    </main>
-
+        </main>
+    </body>
     <script defer>
+        function logOut() {
+            window.location.href = "/logout";
+        }
         var allUserDetails = JSON.parse(localStorage.getItem("users"));
         console.log(allUserDetails);
         console.log(localStorage.getItem("users"));
@@ -45,4 +79,6 @@
                 return user
             }
         }
+
+
     </script>

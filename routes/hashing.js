@@ -1,11 +1,8 @@
-
-
-
 function passwordHashing(password) {
     const sha256 = require('sha256');
     // const { createHash } = require('crypto');
 
-    return sha256(password);
+    return sha256(String(password));
     // return createHash('sha256').update(password).digest('hex');
 };
 

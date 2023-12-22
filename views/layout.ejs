@@ -308,6 +308,18 @@
         top: 35px;
         padding-top: 5px;
     }
+
+    #errorMessageContainer {
+        color: <%=theme==='Light' ? 'black': 'white' %>;
+        background-color: <%=theme==='Light' ? 'white': 'black' %>;
+        font-weight: bold;
+        font-size: 30px;
+        text-shadow: 0px 0px red,
+            0px 2px red;
+        text-align: center;
+        position: relative;
+        top: 670px;
+    }
 </style>
 
 
@@ -340,8 +352,7 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
-    <script src="./node_modules/axios/dist/axios.min.js"></script>
-    <script src="axios.js"></script>
+
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const app = express();
+const app = express(); const db = require('./database/db');
 app.use(express.static("public", { "Content-Type": "application/javascript" }));
 app.use(express.static(path.join(__dirname, 'routes')));
 app.use(express.json());
@@ -14,6 +14,9 @@ app.set('views', path.join(__dirname, 'views'));
 
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
+
+
+
 
 const Router = require("./routes/home");
 app.use("/", Router);

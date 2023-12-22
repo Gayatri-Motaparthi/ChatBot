@@ -1,14 +1,3 @@
-// const axios = require('axios');
-
-// async function getChatResponse(prompt) {
-//     const response = await axios.post('http://127.0.0.1:5000', { question: String(prompt) })
-//         .then((res) => console.log(res))
-//         .catch((err) => console.log(err));
-
-//     console.log(response)
-//     return response;
-// }
-
 
 
 const axios = require('axios');

@@ -13,7 +13,8 @@
         position: fixed;
         left: 560px;
         top: 250px;">
-                Email-ID</p><input type="text" name="em" required>
+                Email-ID</p>
+            <div id="email"><input type="text" name="em" required></div>
             <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
                
                 background-color: <%=theme==='Light' ? 'white': 'black' %>;
@@ -24,85 +25,55 @@
             position: fixed;
             left: 560px;
             top: 360px;"> Password</p>
-            <p><input type="text" name="p" required></p>
+            <p>
+            <div id="password"><input type="text" name="p" required></p>
+            </div>
 
-            <% if (errorMessage) { %>
-                <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
-             
-                    background-color: <%=theme==='Light' ? 'white': 'black' %>;
-                font-weight: bold;
-                font-size: 20px;
-                text-shadow: 0px -1px red,
-                    0px 3px red;
-                text-align: center;
-                position: relative;
-                top: 670px;">
-                    <%= errorMessage %>
-                </p>
-                <% } %>
+            <div id="errorMessageContainer">
+            </div>
 
-                    <p><button onclick=" checkIfUserExists()" id="logInButton" type="button" value="li" class="button">
-                            Log In</button></p>
+            <p><button id="logInButton" type="submit" value="li" class="button">
+                    Log In</button></p>
 
-                    <p><button onclick=" goBack()" type="button" value="back" class="button">Back</button>
-                    </p>
+            <p><button onclick=" goBack()" type="button" value="back" class="button">Back</button>
+            </p>
         </form>
     </main>
 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script defer>
-        document.addEventListener("DOMContentLoaded", function () {
-            var signUpButton = document.getElementById('logInButton');
-            signUpButton.addEventListener('click', checkIfUserExists);
-
-            function checkIfUserExists() {
-                var userName;
-                var email = document.getElementsByName("em")[0].value;
-                var password = document.getElementsByName("p")[0].value;
-
-
-                var allUserDetails = JSON.parse(localStorage.getItem("users"));
-
-                var userExists = false;
-
-                for (var i = 0; i < allUserDetails.length; i++) {
-                    if (email === allUserDetails[i].email) {
-                        userName = allUserDetails[i].name;
-                        userExists = true;
-                        break;
-                    }
-                }
-
-                if (userExists) {
-                    var correctPassword = false;
-
-                    for (var i = 0; i < allUserDetails.length; i++) {
-                        if (password === allUserDetails[i].password) {
-                            correctPassword = true;
-                            break;
-                        }
-                    }
-                    if (correctPassword) {
-                        window.location.href = "/homepage";
-                        return;
-                    }
-                    else {
-                        var error = "Incorrect Password. Try Again"
-                        window.location.href = "/login/" + encodeURIComponent(error);
-
-                    }
-                    return;
-
-
-                }
-                else {
-                    var error = "Account does not exist! Please Sign Up";
-                    window.location.href = "/login/" + encodeURIComponent(error);
-                    return;
-                }
-            }
-        });
-
         function goBack() {
             window.location.href = "/preLogin";
         }
+
+        $(document).ready(function () {
+
+
+            $("#logInButton").on("click", function (event) {
+                event.preventDefault();
+
+                var email = $("input[name='em']").val();
+                var password = $("input[name='p']").val();
+
+                // Make an AJAX POST request to /signup
+                $.post("/login", { em: email, p: password })
+                    .done(function (response) {
+                        // Handle the response here
+                        if (response.error) {
+                            // Display error message in the HTML
+                            console.log(response.error);
+                            $("#errorMessageContainer").text(response.error);
+
+                        } else if (response.success) {
+                            // Redirect to homepage on success
+                            window.location.href = "/homepage";
+                        }
+                    })
+                    .fail(function (error) {
+                        console.error(error);
+                    });
+            });
+        });
+
+
     </script>

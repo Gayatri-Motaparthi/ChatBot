@@ -11,10 +11,8 @@ const { question } = require("readline-sync");
 var questions = [];
 var answers = [];
 
-
-
-
-
+const UserDetails = require("./userDetails");
+const { passwordHashing } = require("./hashing");
 
 router.get("/", function (req, res) {
 
@@ -50,6 +48,8 @@ router.get("/login/:error?", function (req, res) {
 router.get("/homepage/", function (req, res) {
     const name = req.params.name || "";
     console.log("in the homepage request");
+    questions = [];
+    answers = [];
 
     res.render('homepage', { theme, questions, answers });
 });
@@ -71,23 +71,58 @@ router.post("/homepage", async function (req, res) {
 });
 
 
-router.get("/logout", function (req, res) {
+router.get("/logout", async function (req, res) {
     res.redirect("/")
 });
 
 
-// router.post("/signup", function (req, res) {
-//     res.redirect("/homepage");
+router.post("/signup", async function (req, res) {
+    var name = req.body.name;
+    var email = req.body.em;
+    var password = req.body.p;
+    var confirmPassword = req.body.cp;
 
-// });
+    var response = {};
+    if (!email.includes("@") || !email.includes(".")) {
+        response.error = "Invalid Email-ID!";
+        res.json(response);
+    } else if (await UserDetails.checkIfUserExists(email)) {
+        response.error = "Account already exists! Try Logging In ";
+        res.json(response);
+    } else if (! await UserDetails.checkIfPasswordsMatchSignUp(password, confirmPassword)) {
+        response.error = "Passwords do not match! Try again ";
+        res.json(response);
+    } else {
+        await UserDetails.addUser(name, email, passwordHashing(password))
+        response.success = true;
+        res.json(response);
+    }
 
-// router.post("/login", function (req, res) {
+
+});
+
+router.post("/login", async function (req, res) {
+
+    var email = req.body.em;
+    var password = req.body.p;
+    var response = {};
+    if (! await UserDetails.checkIfUserExists(email)) {
+
+        response.error = "Account does not exist! Try Signing Up ";
+        res.json(response);
+
+    } else if (! await UserDetails.checkIfCorrectPasswordLogIn(email, password)) {
+        response.error = "Incorrect Password! Try again ";
+        res.json(response);
+
+    } else {
+        response.success = true;
+        res.json(response);
+    }
 
 
 
-//     res.redirect("/homepage");
-
-// });
+});
 // router.post("/tryPostman", function (req, res) {
 //     console.log(req.body)
 //     res.json({})

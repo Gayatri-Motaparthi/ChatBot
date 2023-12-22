@@ -13,7 +13,8 @@
         position: fixed;
         left: 560px;
         top: 140px;">
-                Name</p><input type="text" name="name" required>
+                Name</p>
+            <div id="name"><input type="text" name="name" required></div>
             <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
                 background-color: <%=theme==='Light' ? 'white': 'black' %>;
         font-weight: bold;
@@ -23,7 +24,9 @@
         position: fixed;
         left: 560px;
         top: 250px;">
-                Email-ID</p><input type="text" name="em" required>
+                Email-ID</p>
+            <div id="email"></div><input type="text" name="em" required>
+            </div>
             <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
                 background-color: <%=theme==='Light' ? 'white': 'black' %>;
             font-weight: bold;
@@ -33,7 +36,9 @@
             position: fixed;
             left: 560px;
             top: 360px;"> Password</p>
-            <p><input type="text" name="p" required></p>
+            <p>
+            <div id="password"><input type="text" name="p" required></div>
+            </p>
 
             <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
                 background-color: <%=theme==='Light' ? 'white': 'black' %>;
@@ -44,29 +49,23 @@
         position: fixed;
         left: 560px;
         top: 470px;">
-                Confirm Password</p><input type="text" name="cp" required>
-
-            <% if (errorMessage) { %>
-                <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
-                    background-color: <%=theme==='Light' ? 'white': 'black' %>;
-                font-weight: bold;
-                font-size: 30px;
-                text-shadow: 0px 0px red,
-                    0px 2px red;
-                text-align: center;
-                position: relative;
-                top: 670px;">
-                    <%= errorMessage %>
-                </p>
-                <% } %>
+                Confirm Password</p>
+            <div id="confirmPassword"><input type="text" name="cp" required></div>
 
 
-                    <p><button onclick="checkIfUserExists()" id="signUpButton" type="button" value="su"
-                            class="button">Sign
-                            Up</button></p>
+            <div id="errorMessageContainer">
+            </div>
 
-                    <p><button onclick=" goBack()" type="button" value="back" class="button">Back</button>
-                    </p>
+
+
+            <div id="signUpButton">
+                <p><button type="submit" value="su" class="button">Sign
+                        Up</button> </p>
+            </div>
+
+
+            <p><button onclick=" goBack()" type="button" value="back" class="button">Back</button>
+            </p>
 
 
 
@@ -75,58 +74,42 @@
 
     </main>
 
-
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script defer>
-
-        document.addEventListener("DOMContentLoaded", function () {
-            var signUpButton = document.getElementById('signUpButton');
-            signUpButton.addEventListener('click', checkIfUserExists);
-
-            function checkIfUserExists() {
-
-                var name = document.getElementsByName("name")[0].value;
-                var email = document.getElementsByName("em")[0].value;
-                var password = document.getElementsByName("p")[0].value;
-                var confirmPassword = document.getElementsByName("cp")[0].value;
-
-                var allUserDetails = JSON.parse(localStorage.getItem("users"));
-
-                for (var i = 0; i < allUserDetails.length; i++) {
-                    if (email === allUserDetails[i].email) {
-                        const errorMessage = "Account already exists. Try Logging In";
-
-                        window.location.href = "/signup/" + encodeURIComponent(errorMessage);
-
-                        return;
-                    }
-                }
-                if (!email.includes("@") || !email.includes(".")) {
-                    const error = "Invalid Email ID!";
-                    window.location.href = "/signup/" + encodeURIComponent(error);
-                    return;
-
-                }
-
-                if (password != confirmPassword) {
-                    const error = "Passwords do not match. Please try again.";
-                    window.location.href = "/signup/" + encodeURIComponent(error);
-
-                }
-                else {
-
-                    userDetails = { "name": name, "email": email, "password": confirmPassword }
-                    allUserDetails.push(userDetails);
-                    localStorage.setItem("users", JSON.stringify(allUserDetails));
-                    window.location.href = "/homepage";
-                }
-
-
-            }
-        });
-
         function goBack() {
             window.location.href = "/preLogin";
         }
+        $(document).ready(function () {
+
+
+            $("#signUpButton").on("click", function (event) {
+                event.preventDefault();
+
+                // Make an AJAX POST request to /signup
+                var name = $("input[name='name']").val();
+                var email = $("input[name='em']").val();
+                var password = $("input[name='p']").val();
+                var confirmPassword = $("input[name='cp']").val();
+
+                // Make an AJAX POST request to /signup
+                $.post("/signup", { name: name, em: email, p: password, cp: confirmPassword })
+                    .done(function (response) {
+                        // Handle the response here
+                        if (response.error) {
+                            // Display error message in the HTML
+                            console.log(response.error);
+                            $("#errorMessageContainer").text(response.error);
+
+                        } else if (response.success) {
+                            // Redirect to homepage on success
+                            window.location.href = "/homepage";
+                        }
+                    })
+                    .fail(function (error) {
+                        console.error(error);
+                    });
+            });
+        });
 
 
     </script>

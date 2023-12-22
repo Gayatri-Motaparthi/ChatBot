@@ -6,7 +6,7 @@ const path = require("path");
 var theme;
 
 const { getChatResponse } = require("./axios");
-const { question } = require("readline-sync");
+
 
 var questions = [];
 var answers = [];

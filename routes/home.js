@@ -23,7 +23,6 @@ router.get("/", function (req, res) {
 router.post("/", function (req, res) {
 
     theme = req.body.theme
-    console.log(theme);
     res.redirect("/preLogin");
 
 });
@@ -46,8 +45,6 @@ router.get("/login/:error?", function (req, res) {
 });
 
 router.get("/homepage/", function (req, res) {
-    const name = req.params.name || "";
-    console.log("in the homepage request");
     questions = [];
     answers = [];
 

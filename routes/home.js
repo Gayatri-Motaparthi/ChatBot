@@ -123,10 +123,5 @@ router.post("/login", async function (req, res) {
 
 
 });
-// router.post("/tryPostman", function (req, res) {
-//     console.log(req.body)
-//     res.json({})
-//     // });
-
 
 module.exports = router;

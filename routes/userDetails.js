@@ -4,9 +4,6 @@ var Users = require("../models/userSchema");
 
 const { passwordHashing } = require("./hashing")
 
-
-// const Users = mongoose.model('user_details', userSchema);
-
 class UserDetails {
 
     static async getUserDetails() {

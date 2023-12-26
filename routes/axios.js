@@ -1,5 +1,3 @@
-
-
 const axios = require('axios');
 
 async function getChatResponse(prompt) {

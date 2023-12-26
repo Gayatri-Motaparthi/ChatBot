@@ -9,7 +9,6 @@ let db = mongoose.connect(connectionString, {
 
 db = mongoose.connection
 
-// Event listeners for connection events
 db.once('open', () => {
     console.log('Connected to MongoDB');
 });
@@ -18,5 +17,4 @@ db.on('error', (err) => {
     console.error('Error connecting to MongoDB:', err);
 });
 
-// Export the Mongoose connection instance
 module.exports = db;

@@ -8,51 +8,63 @@
         <main>
 
 
+            <% if (questions.length==0){%>
+                <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
+                    background-color: <%=theme==='Light' ? 'white': 'black' %>;
+            font-weight: bold;
+            font-size: 55px;
+            text-shadow: 0px -1px mediumpurple,
+                0px 4px mediumpurple;
+                text-align: center;
+        position: relative;
+        top: 270px">Welcome, <%= userName %>!</p>
 
-            <!-- Loop through questions and answers -->
-            <% for (var i=0; i < questions.length; i++) { %>
-                <p style="color:mediumpurple;
+                <%} else {%>
+                    <!-- Loop through questions and answers -->
+                    <% for (var i=0; i < questions.length; i++) { %>
+                        <p style="color:mediumpurple;
                     background-color: <%= theme === 'Light' ? 'white' : 'black' %>;
                     font-weight: bold;
                     font-size: 30px;
                     text-shadow: 0px 0px <%= theme === 'Light' ? 'black' : 'white' %>,
                         0px 2.5px <%= theme === 'Light' ? 'black' : 'white' %>">Question:</p>
-                <p style="color: <%= theme === 'Light' ? 'black' : 'white' %>;
+                        <p style="color: <%= theme === 'Light' ? 'black' : 'white' %>;
                     background-color: <%= theme === 'Light' ? 'white' : 'black' %>;
                     font-weight: bold;
                     font-size: 20px;
                     text-shadow: 0px -1px mediumpurple,
                         0px 3px mediumpurple;">
-                    <%= questions[i] %>
-                </p>
-                <p style="color:mediumpurple;
+                            <%= questions[i] %>
+                        </p>
+                        <p style="color:mediumpurple;
                     background-color: <%= theme === 'Light' ? 'white' : 'black' %>;
                     font-weight: bold;
                     font-size: 30px;
                     text-shadow: 0px 0px <%= theme === 'Light' ? 'black' : 'white' %>,
                         0px 2.5px <%= theme === 'Light' ? 'black' : 'white' %>">Answer:</p>
-                <p style="color: <%= theme === 'Light' ? 'black' : 'white' %>;
+                        <p style="color: <%= theme === 'Light' ? 'black' : 'white' %>;
                     background-color: <%= theme === 'Light' ? 'white' : 'black' %>;
                     font-weight: bold;
                     font-size: 20px;
                     text-shadow: 0px -1px mediumpurple,
                         0px 3px mediumpurple;">
-                    <%= answers[i] %>
-                </p>
-                <br>
-                <br>
-                <% } %>
-
-
-
-                    <form action="/homepage" , method="post">
-                        <p><input type="text" placeholder="Message ChatGPT..." name="inputbar" required><button
-                                type="submit" value="enter" class="button">Enter</p>
-
-                        <p><button onclick="logOut()" type="button" value="logout" class="button">Log Out
+                            <%= answers[i] %>
                         </p>
+                        <br>
+                        <br>
+                        <% } %>
+                            <% }%>
 
-                    </form>
+
+
+                                <form action="/homepage" , method="post">
+                                    <p><input type="text" placeholder="Message ChatGPT..." name="inputbar"
+                                            required><button type="submit" value="enter" class="button">Enter</p>
+
+                                    <p><button onclick="logOut()" type="button" value="logout" class="button">Log Out
+                                    </p>
+
+                                </form>
 
 
 

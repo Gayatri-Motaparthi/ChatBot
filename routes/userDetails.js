@@ -16,6 +16,23 @@ class UserDetails {
         }
     }
 
+    static async getUserName(email) {
+        try {
+            const users = await this.getUserDetails();
+
+            for (let i = 0; i < users.length; i++) {
+                if (email == users[i].email) {
+                    return users[i].username;
+                }
+            }
+
+            return "Anonymous";
+        } catch (err) {
+            console.error(err);
+            throw err;
+        }
+    }
+
 
     static async checkIfUserExists(email) {
         try {

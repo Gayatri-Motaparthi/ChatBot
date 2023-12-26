@@ -10,6 +10,7 @@ const { getChatResponse } = require("./axios");
 
 var questions = [];
 var answers = [];
+var userName;
 
 const UserDetails = require("./userDetails");
 const { passwordHashing } = require("./hashing");
@@ -44,11 +45,11 @@ router.get("/login/:error?", function (req, res) {
 
 });
 
-router.get("/homepage/", function (req, res) {
+router.get("/homepage", function (req, res) {
     questions = [];
     answers = [];
 
-    res.render('homepage', { theme, questions, answers });
+    res.render('homepage', { theme, questions, answers, userName });
 });
 
 
@@ -91,6 +92,7 @@ router.post("/signup", async function (req, res) {
         res.json(response);
     } else {
         await UserDetails.addUser(name, email, passwordHashing(password))
+        userName = name;
         response.success = true;
         res.json(response);
     }
@@ -113,6 +115,7 @@ router.post("/login", async function (req, res) {
         res.json(response);
 
     } else {
+        userName = await UserDetails.getUserName(email);
         response.success = true;
         res.json(response);
     }

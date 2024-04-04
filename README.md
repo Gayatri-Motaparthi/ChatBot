@@ -17,7 +17,9 @@ This project is a chatbot inspired by Bard, with the feature of a dark and light
 1. Clone the repository
 2. Install dependencies
    - npm install express path body-parser ejs cookie-parser axios mongoose sha256
-3. Run the Program
-   - node app.js
+  
+## Usage
+Run the Program
+- node app.js
 
  

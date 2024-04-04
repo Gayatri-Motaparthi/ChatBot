@@ -15,15 +15,15 @@ This project is a chatbot inspired by Bard, with the features of a dark and ligh
 
 ## Installation
 1. Clone the repository:
-   - git clone https://github.com/Gayatri-Motaparthi/TalkieTech.git
+   - git clone https://github.com/Gayatri-Motaparthi/ChatBot.git
 2. Navigate to the project directory:
-   - cd TalkieTech
+   - cd ChatBot
 3. Install dependencies
    - npm install express path body-parser ejs cookie-parser axios mongoose sha256
 4. Clone this repository for getting responses from Bard:
-   - git clone https://github.com/Gayatri-Motaparthi/ResponsesForTalkieTech.git
-5. Navigate to the directory of ResponsesForTalkieTech:
-   - cd ResponsesForTalkieTech
+   - git clone https://github.com/Gayatri-Motaparthi/ResponsesForChatBot.git
+5. Navigate to the directory of ResponsesForChatBot:
+   - cd ResponsesForChatBot
 6. Install Python dependencies:
    - pip install Flask dotenv
   

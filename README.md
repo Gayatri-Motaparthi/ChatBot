@@ -17,9 +17,19 @@ This project is a chatbot inspired by Bard, with the feature of a dark and light
 1. Clone the repository
 2. Install dependencies
    - npm install express path body-parser ejs cookie-parser axios mongoose sha256
+3. Clone this repository for getting responses from Bard:
+   - git clone https://github.com/Gayatri-Motaparthi/ResponsesForTalkieTech.git
+4. Navigate to the directory of ResponsesForTalkieTech:
+   - cd ResponsesForTalkieTech
+5. Install Python dependencies:
+   - pip install Flask dotenv
+6.
   
 ## Usage
-Run the Program
-- node app.js
+1. Start the Bard response server:
+   - python3 run.py
+2. Once the Bard response server is running, start the chatbot server:
+   - node app.js
+3. Open your web browser and navigate to http://localhost: to access the chatbot.
 
  

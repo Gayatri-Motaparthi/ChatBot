@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a chatbot inspired by Bard, with the feature of a dark and light theme functionality, as well as user authentication for login/signup. It is built using Node.js, Express, HTML/CSS, and MongoDB as the database.
+This project is a chatbot inspired by Bard, with the feature of a dark and light theme, as well as user authentication for login/signup. It is built using Node.js, Express, HTML/CSS, and MongoDB as the database.
 
 ## Features
 

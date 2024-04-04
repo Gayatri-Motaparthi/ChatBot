@@ -12,3 +12,12 @@ This project is a chatbot inspired by Bard, with the feature of a dark and light
 - **Node.js and Express:** Utilizes Node.js and Express for the backend server and routing.
 - **MongoDB:** Stores authentication information in a MongoDB database.
 - **HTML/CSS:** Implements the user interface.
+
+## Installation
+1. Clone the repository
+2. Install dependencies
+   - npm install express path body-parser ejs cookie-parser axios mongoose sha256
+3. Run the Program
+   - node app.js
+
+ 

@@ -30,6 +30,6 @@ This project is a chatbot inspired by Bard, with the feature of dark and light t
    - python3 run.py
 2. Once the Bard response server is running, start the chatbot server:
    - node app.js
-3. Open your web browser and navigate to http://localhost:0.0.1.3000 to access the chatbot.
+3. Open your web browser and navigate to http://127.0.0.1:3000 to access the chatbot.
 
  
